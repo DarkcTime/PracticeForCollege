@@ -24,13 +24,11 @@ namespace AuthForCollege.View
     public partial class Auth : Window
     {
         private UserRepo userRepo = new UserRepo();
-        private DispatcherTimer dispatcherTimer;
-        private Counter Counter; 
-
+     
         public Auth()
         {
             InitializeComponent();
-            Counter = new Counter();
+           
         }
 
         #region UI Events
@@ -52,12 +50,7 @@ namespace AuthForCollege.View
                 }
                 else
                 {
-                    SharedClass.MessageBoxWarning($"Неправильный логин или пароль. Попыток до блокировки {3 - Counter.counter}");
-                    if (!Counter.IsAddCount())
-                    {
-                        blockMode();
-                        return;
-                    }
+                    SharedClass.MessageBoxWarning($"Неправильный логин или пароль."); 
                 }
             }
             catch(Exception ex)
@@ -75,47 +68,8 @@ namespace AuthForCollege.View
 
         #endregion
 
-        #region CounterTrying
-        private void CreateTimer()
-        {
-            dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Tick += timerTick;
-            dispatcherTimer.Start();
-        }
-        private void timerTick(object sender, EventArgs e)
-        {
-            setTextForBlock(Counter.numberSecond);
-            if (!Counter.IsMinusSeconds()) startMode();
-        }
-
-        private void blockMode()
-        {
-            IsEnabledElements(false);
-            CreateTimer();
-            setTextForBlock(60);
-        }
-        private void startMode()
-        {
-            IsEnabledElements(true);
-            this.dispatcherTimer.Stop();
-            this.txtTimer.Text = string.Empty;
-
-        }
-        private void IsEnabledElements(bool isEnabled)
-        {
-            this.txtLogin.IsEnabled = isEnabled;
-            this.txtPassword.IsEnabled = isEnabled;
-            this.btnAuth.IsEnabled = isEnabled;
-
-        }
-
-        private void setTextForBlock(int sec)
-        {
-            this.txtTimer.Text = $"До снятия блокировки {sec}";
-        }
-
-        #endregion
+     
+        
         private bool IsFieldsEmpty()
         {
             return string.IsNullOrWhiteSpace(this.txtLogin.Text) || string.IsNullOrWhiteSpace(this.txtPassword.Text);             

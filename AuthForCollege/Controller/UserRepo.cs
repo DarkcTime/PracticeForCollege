@@ -13,7 +13,7 @@ namespace AuthForCollege.Controller
 
          public bool IsAuth(string login, string password)
         {
-            var user = context.Users.Where(i => i.Login == login && i.Password == password); 
+            var user = context.Users.ToList().Where(i => i.Login == login && i.Password == password); 
 
             if(user.Count() > 0)
             {

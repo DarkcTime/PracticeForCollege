@@ -1,16 +1,20 @@
-﻿using AuthForCollege.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuthForCollege.Model; 
 
 namespace AuthForCollege.Controller
 {
     class ModelRepo
     {
-        protected DataModel context = new DataModel();
-
+        protected static CollegeEntities context = new CollegeEntities();
+        
+        protected void SaveChanges()
+        {
+            context.SaveChanges();
+        }
 
     }
 }

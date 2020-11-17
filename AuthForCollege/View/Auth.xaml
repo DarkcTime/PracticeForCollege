@@ -25,9 +25,6 @@
                     Вход
                 </Label>
             </Grid>
-
-            <TextBlock Grid.Row="1" Name="txtTimer"></TextBlock>
-             
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>

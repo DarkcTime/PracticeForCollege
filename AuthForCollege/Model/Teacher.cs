@@ -12,24 +12,27 @@ namespace AuthForCollege.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Teacher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Teacher()
         {
-            this.Students = new HashSet<Student>();
-            this.Teachers = new HashSet<Teacher>();
+            this.Groups = new HashSet<Group>();
         }
     
-        public int IdUser { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public int RoleId { get; set; }
+        public int IdEmployee { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Speech { get; set; }
+        public int GenderId { get; set; }
+        public Nullable<int> UserId { get; set; }
     
-        public virtual Role Role { get; set; }
+        public virtual Gender Gender { get; set; }
+
+        public virtual ICollection<Gender> GendersCollection { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

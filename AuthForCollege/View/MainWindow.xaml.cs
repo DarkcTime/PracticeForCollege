@@ -46,17 +46,16 @@ namespace AuthForCollege
             switch (UserRepo.AuthUser.RoleId)
             {
                 case 1:
-                    role = "Пользователь";
+                    role = "Студент";
                     break;
                 case 2:
-                    role = "Администратор";
+                    role = "Учитель";
+                    this.MainFrame.Content = new ListTeachers();
                     break;
                 case 3:
-                    role = "Координатор";
+                    role = "Руководитель";
                     break;
-            }
-
-            this.txtAuth.Text = $"Вы успешно авторизированы как {role}"; 
+            } 
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
