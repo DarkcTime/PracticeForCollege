@@ -1,0 +1,76 @@
+﻿<Window x:Class="AuthForCollege.View.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AuthForCollege.View"
+        mc:Ignorable="d" Icon="/AuthForCollege;component/Images/icon.png" ResizeMode="CanMinimize"
+        Title="Authorization" Height="450" Width="400">
+    <Grid>
+     
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/AuthForCollege;component/Images/user.png"></Image>
+                <Label Style="{StaticResource LabelStyle}" Grid.Column="1">
+                    Вход
+                </Label>
+            </Grid>
+
+            <TextBlock Grid.Row="1" Name="txtTimer"></TextBlock>
+             
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <GroupBox 
+                    Style="{StaticResource StyleGroupBoxTextSmall}" Header="Логин"
+                    >
+                    <TextBox Style="{StaticResource StyleTextBoxSmall}"
+                         Template="{StaticResource TextBoxTemplate}"
+                             Name="txtLogin"></TextBox>
+                </GroupBox>
+                <GroupBox  Grid.Row="1" Style="{StaticResource StyleGroupBoxTextSmall}" 
+                           Header="Пароль">
+                    <TextBox Name="txtPassword"
+                             Style="{StaticResource StyleTextBoxSmall}"
+                             Template="{StaticResource TextBoxTemplate}"></TextBox>
+                </GroupBox>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource StyleButtonSmall}" 
+                        Grid.Column="2"
+                        Template="{StaticResource ButtonTemplate}"
+                        Content="Войти"
+                        Click="AuthClick"
+                        Name="btnAuth"></Button>
+                <Button Style="{StaticResource StyleButtonSmall}"
+                        Template="{StaticResource ButtonTemplate}"
+                        Grid.Column="1"
+                        Click="CloseClick"
+                        Content="Закрыть"
+                        >
+
+                </Button>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

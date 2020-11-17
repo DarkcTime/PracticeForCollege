@@ -1,0 +1,125 @@
+﻿<Application x:Class="AuthForCollege.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AuthForCollege"
+             StartupUri="View/Auth.xaml">
+    <Application.Resources>
+        <Style x:Key="Standart">
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontFamily" Value="Arial"/>
+            <Setter Property="TextBlock.FontSize" Value="12" />
+        </Style>
+        <!--TextBlock-->
+        <Style x:Key="TextBlockStyle" BasedOn="{StaticResource Standart}">
+
+        </Style>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+            <Setter Property="FontSize" Value="18"></Setter>
+        </Style>
+        <!--Label-->
+        <Style x:Key="LabelStyle" TargetType="Label" BasedOn="{StaticResource Standart}">
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+        <Style TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+
+        </Style>
+        <!--Button-->
+        <Style x:Key="StyleButton" TargetType="Button" BasedOn="{StaticResource Standart}" >
+            <Setter Property="Background" Value="#FF288CEA">
+            </Setter>
+            <Setter Property="Foreground" Value="White">
+            </Setter>
+        </Style>
+        <Style x:Key="StyleButtonSmall" TargetType="Button" BasedOn="{StaticResource StyleButton}" >
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style x:Key="StyleButtonWidth" TargetType="Button" BasedOn="{StaticResource StyleButton}" >
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style x:Key="StyleButtonIcon" TargetType="Button" BasedOn="{StaticResource Standart}" >
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+        </Style>
+        <!--GroupBox-->
+        <Style x:Key="StyleGroupBoxText" TargetType="GroupBox" BasedOn="{StaticResource Standart}">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="70" />
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style x:Key="StyleGroupBoxTextSmall" TargetType="GroupBox" BasedOn="{StaticResource StyleGroupBoxText}">
+            <Setter Property="Width" Value="260" />
+        </Style>
+        <Style x:Key="StyleGroupBoxTextLong" TargetType="GroupBox" BasedOn="{StaticResource StyleGroupBoxText}">
+            <Setter Property="Width" Value="300" />
+        </Style>
+        <!--TextBox-->
+        <Style x:Key="StyleTextBoxSmall" TargetType="TextBox" BasedOn="{StaticResource Standart}">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="FontSize" Value="20"/>
+
+        </Style>
+        <Style x:Key="StyleTextBoxLong" TargetType="TextBox" BasedOn="{StaticResource Standart}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="280"/>
+        </Style>
+        <!--ComboBox-->
+        <Style x:Key="StyleComboBox" TargetType="ComboBox" BasedOn="{StaticResource Standart}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="180"/>
+        </Style>
+
+
+        <!--Template="{StaticResource ButtonTemplate}"-->
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD" />
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6" />
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B" />
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE" />
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4" />
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5" />
+                    <Setter Property="Foreground" Value="#FF838383" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+
+            <!--Template="{StaticResource TextBoxTemplate}"-->
+        </ControlTemplate>
+        <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+    </Application.Resources>
+</Application>
