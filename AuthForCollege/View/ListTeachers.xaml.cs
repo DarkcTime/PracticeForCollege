@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using AuthForCollege.Model; 
 using AuthForCollege.Controller;
 using AuthForCollege.BackEnd;
+using System.Collections.ObjectModel;
 
 namespace AuthForCollege.View
 {
@@ -24,6 +25,8 @@ namespace AuthForCollege.View
     /// </summary>
     public partial class ListTeachers : Page
     {
+        private ObservableCollection<Teacher> teachersnol { get; set; }
+        public ObservableCollection<Teacher> teachers { get { return teachersnol; } set { teachersnol = value; } }
         public List<Teacher> Teachers { get; set; }
         //public List<Gender> Genders { get; set; }
         public List<Gender> GendersList{ get; set; }
@@ -35,15 +38,27 @@ namespace AuthForCollege.View
             InitializeComponent();
             this.DataContext = this;
             GendersList = this.genderRepo.GetGenders();
-            this.MainDataGrid.ItemsSource = this.teacherRepo.GetTeachers();
+            //this.MainDataGrid.ItemsSource = this.teacherRepo.GetTeachers();
             //Genders = this.genderRepo.GetGenders();
+            teachersnol = new ObservableCollection<Teacher>(teacherRepo.GetTeachers());
+            //MainDataGrid.ItemsSource = teachers;
         }
 
         private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //teachers.RemoveAt(1);
+            //teachers.Add(new Teacher());
+            teachers.Clear();
+            teachers = teacherRepo.GetSearchResult(TxbSearch.Text);
+            //teachersnol = teacherRepo.GetSearchResult(TxbSearch.Text);
+            //foreach (var item in teacherRepo.GetSearchResult(TxbSearch.Text))
+            //{
+            //    teachers.Add(item);
+            //}
+            //Teachers = teacherRepo.GetSearchResult(this.TxbSearch.Text);
             //if (string.IsNullOrWhiteSpace(this.TxbSearch.Text)) return;
-            this.MainDataGrid.ItemsSource = null;
-            this.MainDataGrid.ItemsSource = this.teacherRepo.GetSearchResult(this.TxbSearch.Text);
+            //this.MainDataGrid.ItemsSource = null;
+            //this.MainDataGrid.ItemsSource = this.teacherRepo.GetSearchResult(this.TxbSearch.Text);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,10 @@ namespace AuthForCollege.Controller
             return context.Teachers.ToList(); 
         } 
 
-        public List<Teacher> GetSearchResult(string search)
+        public ObservableCollection<Teacher> GetSearchResult(string search)
         {
-            return context.Teachers.Where(i => i.FirstName.Contains(search)
-            || i.LastName.Contains(search) || i.MiddleName.Contains(search)).ToList(); 
+            return new ObservableCollection<Teacher>(context.Teachers.Where(i => i.FirstName.Contains(search)
+            || i.LastName.Contains(search) || i.MiddleName.Contains(search)).ToList()); 
         }
 
     }

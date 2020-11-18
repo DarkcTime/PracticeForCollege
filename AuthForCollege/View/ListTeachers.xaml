@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:AuthForCollege.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListTeachers">
+      Title="ListTeachers" WindowTitle="Список Учителей"  >
     <Page.Resources>
-        <CollectionViewSource x:Key="ItemsCVS" Source="{Binding Path=GendersList}" />
+        <CollectionViewSource x:Key="ItemsCVS" Source="{Binding Path=GendersList,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" />
     </Page.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -29,9 +29,10 @@
                 </Button.Content>
             </Button>
         </Grid>
-        
-        
-        <DataGrid ItemsSource="{Binding Path=Teachers}" 
+
+
+        <DataGrid ItemsSource="{Binding Path=teachers,
+            NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
                   AutoGenerateColumns="False"
                   Grid.Row="1"
                   Name="MainDataGrid"

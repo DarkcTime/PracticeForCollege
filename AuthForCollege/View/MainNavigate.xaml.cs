@@ -23,7 +23,6 @@ namespace AuthForCollege.View
         public MainNavigate()
         {
             InitializeComponent();
-            this.Content = new View.ListTeachers();
             this.Navigate(new View.ListTeachers());
             
         }
