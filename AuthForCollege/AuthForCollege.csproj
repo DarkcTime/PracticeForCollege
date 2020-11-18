@@ -113,7 +113,19 @@
     <Compile Include="Model\Role.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StatusStudent.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Student.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Teacher.cs">
@@ -186,6 +198,9 @@
     <Resource Include="Images\search_16px.png" />
     <Resource Include="Images\add_user_group_man_man_40px.png" />
     <Resource Include="Images\search_40px.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="Model\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataModel.edmx</DependentUpon>
