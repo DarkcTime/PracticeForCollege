@@ -29,6 +29,7 @@ namespace AuthForCollege.View
         {
             InitializeComponent();
            
+
         }
 
         #region UI Events
