@@ -23,13 +23,23 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.15*"/>
             </Grid.ColumnDefinitions>
             <Image Source="/AuthForCollege;component/Images/search_40px.png" Height="30" ></Image>
             <TextBox Grid.Column="1" Height="30" Margin="5 0 5 0" Name="TxbSearch" TextChanged="TxbSearch_TextChanged"></TextBox>
-            <Button Grid.Column="2" Style="{StaticResource StyleButtonSmall}" Background="White" Width="100">
+            <Button Grid.Column="2" Style="{StaticResource StyleButtonSmall}" 
+                    Background="White" Width="60"
+                    Click="AddNewStudent">
                 <Button.Content>
                     <Image Source="/AuthForCollege;component/Images/add_user_group_man_man_40px.png"></Image>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="3" Style="{StaticResource StyleButtonSmall}" 
+                    Background="White" Width="60"
+                    Click="SaveStudent">
+                <Button.Content>
+                    <Image Source="/AuthForCollege;component/Images/save_100px.png"></Image>
                 </Button.Content>
             </Button>
         </Grid>

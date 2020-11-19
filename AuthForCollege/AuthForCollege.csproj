@@ -65,9 +65,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\StudentRepo.cs" />
+    <Compile Include="Model\ExtendStudent.cs" />
+    <Compile Include="View\AddNewStudent.xaml.cs">
+      <DependentUpon>AddNewStudent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AddNewStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +217,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\save_100px.png" />
     <Content Include="Model\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataModel.edmx</DependentUpon>

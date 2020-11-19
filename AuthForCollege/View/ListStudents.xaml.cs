@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using AuthForCollege.Model;
-using AuthForCollege.Controller; 
+using AuthForCollege.Controller;
+using AuthForCollege.BackEnd;
 
 namespace AuthForCollege.View
 {
@@ -52,6 +53,17 @@ namespace AuthForCollege.View
             this.MainDataGrid.ItemsSource = null;
             this.MainDataGrid.ItemsSource = this.studentRepo.
                 GetSearchStudentsResult(this.TxbSearch.Text);
+        }
+
+        private void AddNewStudent(object sender, RoutedEventArgs e)
+        {
+            SharedClass.OpenNewPage(this, new AddNewStudent());  
+        }
+
+        private void SaveStudent(object sender, RoutedEventArgs e)
+        {
+            studentRepo.SaveChanges();
+            SharedClass.MessageBoxInformation("Данные успешно изменены в БД");
         }
     }
 }

@@ -4,11 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace AuthForCollege.BackEnd
 {
     class SharedClass
     {
+
+        public static void OpenNewPage(System.Windows.DependencyObject obj, Page page)
+        {
+            NavigationService service = NavigationService.GetNavigationService(obj);
+            service.Navigate(page);
+        }
+
         public static void MessageBoxError(Exception ex)
         {
             MessageBox.Show(ex.Message, ex.HelpLink, MessageBoxButton.OK, MessageBoxImage.Error);

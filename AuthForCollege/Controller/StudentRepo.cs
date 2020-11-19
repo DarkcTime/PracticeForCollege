@@ -31,5 +31,11 @@ namespace AuthForCollege.Controller
             || i.LastName.Contains(search) || i.MiddleName.Contains(search)).ToList();
         }
 
+
+        public void AddStudent(Student student)
+        {
+            context.Students.Add(student);
+            SaveChanges();
+        }
     }
 }

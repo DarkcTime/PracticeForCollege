@@ -11,7 +11,7 @@ namespace AuthForCollege.Controller
     {
         protected static CollegeEntities context = new CollegeEntities();
         
-        protected void SaveChanges()
+        public void SaveChanges()
         {
             context.SaveChanges();
         }

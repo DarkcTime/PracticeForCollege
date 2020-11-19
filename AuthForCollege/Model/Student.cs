@@ -31,5 +31,8 @@ namespace AuthForCollege.Model
         public virtual Group Group { get; set; }
         public virtual StatusStudent StatusStudent { get; set; }
         public virtual User User { get; set; }
+
+
+
     }
 }
