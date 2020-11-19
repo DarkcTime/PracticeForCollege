@@ -19,14 +19,18 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Image Source="/AuthForCollege;component/Images/ks54.png" Margin="5"></Image>
-            <Button Style="{StaticResource StyleButtonSmall}"  Grid.Column="1" Template="{StaticResource ButtonTemplate}">
+            <Button Style="{StaticResource StyleButtonSmall}"  Grid.Column="1" 
+                    Template="{StaticResource ButtonTemplate}"
+                    Name="BtnStudents"
+                    Click="StudentsClick">
                 <Button.Content>
                     <TextBlock FontSize="12">Студенты</TextBlock>
                 </Button.Content>
             </Button>
             <Button Style="{StaticResource StyleButtonSmall}" 
                     Grid.Column="2" Template="{StaticResource ButtonTemplate}"
-                    Name="BtnTeachers">
+                    Name="BtnTeachers"
+                    Click="TeachersClick">
                 <Button.Content>
                     <TextBlock FontSize="12">Преподаватели</TextBlock>
                 </Button.Content>
@@ -40,7 +44,7 @@
                 </Button.Content>
             </Button>
         </Grid>
-        <Frame Name="MainFrame" Grid.Row="1"></Frame>
+        <Frame Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
         
     </Grid>
 </Window>

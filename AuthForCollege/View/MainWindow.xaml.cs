@@ -16,6 +16,7 @@ using AuthForCollege.BackEnd;
 using AuthForCollege.Controller;
 using AuthForCollege.View;
 
+
 namespace AuthForCollege
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace AuthForCollege
             try
             {
                 InitializeComponent();
-                SetAuthText();
+                LoadWindowDependingOnTheRole(); 
             }
             catch(Exception ex)
             {
@@ -38,24 +39,27 @@ namespace AuthForCollege
 
         }
 
-        private void SetAuthText()
+        private void LoadWindowDependingOnTheRole()
         {
-
-            string role = string.Empty;
-
-            switch (UserRepo.AuthUser.RoleId)
+            switch (UserRepo.AuthUser.Role.IdRole)
             {
                 case 1:
-                    role = "Студент";
+                    this.MainFrame.Content = new Student();
+                    this.BtnStudents.Visibility = Visibility.Hidden;
+                    this.BtnTeachers.Visibility = Visibility.Hidden;                  
                     break;
-                case 2:
-                    role = "Учитель";
-                    this.MainFrame.Content = new ListTeachers();
+                case 2:                    
+                    this.MainFrame.Content = new ListStudents();
+                    this.BtnStudents.Visibility = Visibility.Visible;
+                    this.BtnTeachers.Visibility = Visibility.Hidden;                    
                     break;
                 case 3:
-                    role = "Руководитель";
+                    this.MainFrame.Content = new ListStudents();
+                    this.BtnStudents.Visibility = Visibility.Visible;
+                    this.BtnTeachers.Visibility = Visibility.Visible;
                     break;
-            } 
+            }
+
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
@@ -63,6 +67,25 @@ namespace AuthForCollege
             Auth auth = new Auth();
             auth.Show();
             this.Close();
+        }
+
+        private void StudentsClick(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Content = new ListStudents(); 
+        }
+        private void TeachersClick(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Content = new ListTeachers();            
+        }
+
+        private enum Lists
+        {
+            Students, Teachers
+        }
+
+        private enum Roles
+        {
+            Студент, Учитель, Завуч
         }
     }
 }

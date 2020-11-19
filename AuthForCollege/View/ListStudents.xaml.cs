@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using AuthForCollege.Model;
+using AuthForCollege.Controller; 
+
 namespace AuthForCollege.View
 {
     /// <summary>
@@ -20,9 +23,35 @@ namespace AuthForCollege.View
     /// </summary>
     public partial class ListStudents : Page
     {
+        public List<Gender> Genders { get; set; }
+        public List<StatusStudent> Statuses { get; set; }
+        public List<Group> Groups { get; set; }
+
+        private GenderRepo genderRepo = new GenderRepo();
+        private StudentRepo studentRepo = new StudentRepo();
+
+
         public ListStudents()
         {
             InitializeComponent();
+            this.DataContext = this; 
+            LoadCollections();
+           
+        }
+
+        private void LoadCollections()
+        {
+            Genders = genderRepo.GetGenders();
+            Statuses = studentRepo.GetStatusStudents();
+            Groups = studentRepo.GetGroups();
+            this.MainDataGrid.ItemsSource = studentRepo.GetStudents(); 
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.MainDataGrid.ItemsSource = null;
+            this.MainDataGrid.ItemsSource = this.studentRepo.
+                GetSearchStudentsResult(this.TxbSearch.Text);
         }
     }
 }
