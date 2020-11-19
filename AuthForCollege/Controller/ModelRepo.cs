@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuthForCollege.BackEnd;
 using AuthForCollege.Model; 
 
 namespace AuthForCollege.Controller
@@ -11,9 +12,23 @@ namespace AuthForCollege.Controller
     {
         protected static CollegeEntities context = new CollegeEntities();
         
-        public void SaveChanges()
+        public bool SaveChanges()
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+                return true; 
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException db)
+            {
+                SharedClass.MessageBoxWarning("Данные заполнены некорректно");
+                return false; 
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ve)
+            {
+                SharedClass.MessageBoxWarning("Данные заполнены некорректно");
+                return false; 
+            }            
         }
 
     }

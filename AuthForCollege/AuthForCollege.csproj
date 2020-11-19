@@ -66,13 +66,21 @@
     </ApplicationDefinition>
     <Compile Include="Controller\StudentRepo.cs" />
     <Compile Include="Model\ExtendStudent.cs" />
+    <Compile Include="Model\ExtendTeacher.cs" />
     <Compile Include="View\AddNewStudent.xaml.cs">
       <DependentUpon>AddNewStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddNewTeacher.xaml.cs">
+      <DependentUpon>AddNewTeacher.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AddNewStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddNewTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

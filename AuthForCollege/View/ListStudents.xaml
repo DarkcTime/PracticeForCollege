@@ -48,6 +48,7 @@
         <DataGrid AutoGenerateColumns="False"
                   Grid.Row="2"
                   Name="MainDataGrid"
+                  CanUserAddRows="False"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding Path=MiddleName}"></DataGridTextColumn>

@@ -62,8 +62,8 @@ namespace AuthForCollege.View
 
         private void SaveStudent(object sender, RoutedEventArgs e)
         {
-            studentRepo.SaveChanges();
-            SharedClass.MessageBoxInformation("Данные успешно изменены в БД");
+            if(studentRepo.SaveChanges())
+                SharedClass.MessageBoxInformation("Данные успешно изменены в БД");
         }
     }
 }

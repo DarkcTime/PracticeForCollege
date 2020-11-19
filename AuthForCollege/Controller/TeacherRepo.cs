@@ -20,5 +20,17 @@ namespace AuthForCollege.Controller
             || i.LastName.Contains(search) || i.MiddleName.Contains(search)).ToList(); 
         }
 
+        public bool AddNewTeacher(Teacher teacher)
+        {
+            context.Teachers.Add(teacher);
+            return SaveChanges();
+        }
+
+        public bool DelTeacher(Teacher teacher)
+        {
+            context.Teachers.Remove(teacher);
+            return SaveChanges();
+        }
+
     }
 }

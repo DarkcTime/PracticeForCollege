@@ -32,10 +32,10 @@ namespace AuthForCollege.Controller
         }
 
 
-        public void AddStudent(Student student)
+        public bool AddStudent(Student student)
         {
             context.Students.Add(student);
-            SaveChanges();
+            return SaveChanges();
         }
     }
 }

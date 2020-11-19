@@ -45,5 +45,18 @@ namespace AuthForCollege.View
             this.MainDataGrid.ItemsSource = null;
             this.MainDataGrid.ItemsSource = this.teacherRepo.GetSearchResult(this.TxbSearch.Text);
         }
+
+        private void SaveTeacher(object sender, RoutedEventArgs e)
+        {
+            if(teacherRepo.SaveChanges())
+                SharedClass.MessageBoxInformation("Данные успешно изменены в БД");
+
+        }
+
+        private void AddNewTeacher(object sender, RoutedEventArgs e)
+        {
+            SharedClass.OpenNewPage(this, new AddNewTeacher());
+        }
+
     }
 }

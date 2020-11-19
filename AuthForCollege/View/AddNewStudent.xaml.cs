@@ -43,18 +43,11 @@ namespace AuthForCollege.View
         {
             try
             {
-                studentRepo.AddStudent(Student);
+                if(!studentRepo.AddStudent(Student)) return;
+
                 SharedClass.MessageBoxInformation("Студент успешно добавлен в таблицу");
                 SharedClass.OpenNewPage(this, new ListStudents());
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException db)
-            {
-                SharedClass.MessageBoxWarning("Все поля должны быть заполнены");
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ve)
-            {
-                SharedClass.MessageBoxWarning("Все поля должны быть заполнены");
-            }
+            }         
             catch(Exception ex){
                 SharedClass.MessageBoxError(ex.Message);
             }
